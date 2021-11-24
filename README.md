@@ -28,7 +28,7 @@ Repositório para o Live Coding DIO do dia 24/11/2021
 
  - Criar um database:
  
-    ```CREATE DATABASE ORDERS_DB;```
+    ```CREATE DATABASE PERMISSIONS_DB;```
 
 - Acessar o db criado
 
