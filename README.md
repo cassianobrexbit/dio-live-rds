@@ -120,4 +120,12 @@ Repositório para o Live Coding DIO do dia 24/11/2021
 ### Desenvolvendo o código da função Lambda
 
 - Editor de código da função criada -> Inserir o código disponível na pasta ```src``` deste projeto
-- 
+
+### Importando a biblioteca ```pymysql``` utilizando Lambda Layers
+
+- Lambda Dashboard -> Layers -> Create layer -> Name [pymysql_layer] -> Upload a .zip file - o arquivo ```pyton.zip``` está disponível na pasta ```src``` do projeto -> Compatible architectures x86_64 -> Compatible runtimes - Python 3.9 -> Create
+- Lambda Dashboard -> selecionar a função criada -> Layers -> Add a layer -> Custom layers -> selecionar o layer criado anteriormente -> Add
+
+### Testando a função criada
+
+- Test -> New event -> Template -> Hello World -> Name [test] -> Save changes -> Test
