@@ -115,7 +115,7 @@ Repositório para o Live Coding DIO do dia 24/11/2021
 ### Configurando permissões de acesso ao RDS
 
 - Selecionar a função criada -> Configuration -> Permissions -> Selecionar a função criada e abrir no console do AWS IAM
-- A ttach policies Pesquisar pela policy AWSLambdaVPCAccessExecutionRole -> Attach policy
+- Attach policies -> Pesquisar pela policy AWSLambdaVPCAccessExecutionRole -> Attach policy
 
 ### Desenvolvendo o código da função Lambda
 
