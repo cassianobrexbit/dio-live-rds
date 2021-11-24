@@ -28,11 +28,11 @@ Repositório para o Live Coding DIO do dia 24/11/2021
 
  - Criar um database:
  
-    ```CREATE DATABASE ORDERS_DB```
+    ```CREATE DATABASE ORDERS_DB;```
 
 - Acessar o db criado
 
-    ```USE ORDERS_DB```
+    ```USE ORDERS_DB;```
 
 - Criar uma tabela de produtos
 
@@ -40,7 +40,7 @@ Repositório para o Live Coding DIO do dia 24/11/2021
     CREATE TABLE PRODUCTS (
       id INT PRIMARY KEY,
       value DECIMAL(15,2) NOT NULL
-    )
+    );
     ```
     
 - Criar uma tabela de carrinho de compras
@@ -49,7 +49,7 @@ Repositório para o Live Coding DIO do dia 24/11/2021
     CREATE TABLE CARTS (
       id INT PRIMARY KEY,
       user_id INT NOT NULL
-    )
+    );
     ```
 - Criar uma tabela associativa de itens em um carrinho de compras
 
@@ -65,25 +65,25 @@ Repositório para o Live Coding DIO do dia 24/11/2021
 - Descrevendo o esquema de uma tabela 
  
     ```
-    DESC [table_name]
+    DESC [table_name];
     ```
   
 - Inserindo dados em tabelas
 
   ```
-  INSERT INTO CART (id, user_id) VALUES (1,1)
+  INSERT INTO CARTS (id, user_id) VALUES (1,1);
   ```
   ```
-  INSERT INTO PRODUCTS (id, value) VALUES (1,200)
+  INSERT INTO PRODUCTS (id, value) VALUES (1,200);
   ```
   
   ```
-  INSERT INTO ITEMS (cart_id, product_id, quantity) VALUES (1,1, 300)
+  INSERT INTO ITEMS (cart_id, product_id, quantity) VALUES (1,1, 300);
   ```
   
 - Selecionando todos os registros de uma tabela
 
   ```
-  SELECT * FROM [table_name]
+  SELECT * FROM [table_name];
   ```
 
