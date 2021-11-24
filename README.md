@@ -107,3 +107,17 @@ Repositório para o Live Coding DIO do dia 24/11/2021
   ```
 
 ## Realizando queries no Amazon RDS a partir de uma função no AWS Lambda
+
+### Criando a função Lambda
+
+ - Acessar o AWS Lambda console -> Create function -> Author from scratch -> Function name [RDSQuery] -> Runtime - Python3.9 -> Create new role from AWS policy template -> Role name [RDSQueryFromLambdaRole] -> Create function
+
+### Configurando permissões de acesso ao RDS
+
+- Selecionar a função criada -> Configuration -> Permissions -> Selecionar a função criada e abrir no console do AWS IAM
+- A ttach policies Pesquisar pela policy AWSLambdaVPCAccessExecutionRole -> Attach policy
+
+### Desenvolvendo o código da função Lambda
+
+- Editor de código da função criada -> Inserir o código disponível na pasta ```src``` deste projeto
+- 
