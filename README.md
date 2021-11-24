@@ -32,25 +32,29 @@ Repositório para o Live Coding DIO do dia 24/11/2021
 
 - Acessar o db criado
 
-    ```USE ORDERS_DB;```
+    ```USE PERMISSIONS_DB;```
 
-- Criar uma tabela de produtos
+- Criar uma tabela de usuários
 
-    ```
-    CREATE TABLE PRODUCTS (
-      id INT PRIMARY KEY,
-      value DECIMAL(15,2) NOT NULL
-    );
-    ```
+   ```
+   CREATE TABLE user (
+     id bigint(20) NOT NULL, 
+     email varchar(40) NOT NULL,
+     username varchar(15) NOT NULL,
+     password varchar(100) NOT NULL,
+     PRIMARY KEY (id)
+   );
+   ```
     
 - Criar uma tabela de carrinho de compras
     
-    ```
-    CREATE TABLE CARTS (
-      id INT PRIMARY KEY,
-      user_id INT NOT NULL
-    );
-    ```
+   ```
+   CREATE TABLE role (
+     id bigint(20) NOT NULL,
+     name varchar(60) NOT NULL, 
+     PRIMARY KEY (id)
+   );
+   ```
 - Criar uma tabela associativa de itens em um carrinho de compras
 
     ```
@@ -64,21 +68,28 @@ Repositório para o Live Coding DIO do dia 24/11/2021
     ```
 - Descrevendo o esquema de uma tabela 
  
-    ```
-    DESC [table_name];
-    ```
+   ```
+   CREATE TABLE user_roles (
+     user_id bigint(20) NOT NULL,
+     role_id bigint(20) NOT NULL,
+     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE RESTRICT ON UPDATE CASCADE,
+     FOREIGN KEY (role_id) REFERENCES role (id) ON DELETE RESTRICT ON UPDATE CASCADE,
+     PRIMARY KEY (user_id, role_id)
+   );
+   ```
   
 - Inserindo dados em tabelas
 
   ```
-  INSERT INTO CARTS (id, user_id) VALUES (1,1);
-  ```
-  ```
-  INSERT INTO PRODUCTS (id, value) VALUES (1,200);
-  ```
-  
-  ```
-  INSERT INTO ITEMS (cart_id, product_id, quantity) VALUES (1,1, 300);
+  INSERT INTO user VALUES (1, 'cassiano@dio.me', 'Cassiano', 'strongpasswd');
+  INSERT INTO user VALUES (2, 'joao@dio.me', 'Joao', 'strongpasswd');
+
+  INSERT INTO role VALUES (3, 'ADMIN');
+  INSERT INTO role VALUES (4, 'USER');
+
+  INSERT INTO user_roles VALUES (1, 3);
+  INSERT INTO user_roles VALUES (1, 4);
+  INSERT INTO user_roles VALUES (2, 4);
   ```
   
 - Selecionando todos os registros de uma tabela
@@ -86,4 +97,13 @@ Repositório para o Live Coding DIO do dia 24/11/2021
   ```
   SELECT * FROM [table_name];
   ```
+- Selecionando dados da tabela associativa
 
+  ```
+  SELECT user.id, user.email, user.username, role.id AS role_id, role.name AS role_name
+  FROM user 
+  JOIN user_roles on (user.id=user_roles.user_id)
+  JOIN role on (role.id=user_roles.role_id);
+  ```
+
+## Realizando queries no Amazon RDS a partir de uma função no AWS Lambda
